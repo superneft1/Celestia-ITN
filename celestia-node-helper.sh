@@ -105,7 +105,4 @@ case $choice in
     rm -rf $HOME/.celestia-light-blockspacerace-0
     echo "Done"
     ;;
-  *)
-    echo "Invalid option. Please select option 1-7."
-    ;;
 esac
