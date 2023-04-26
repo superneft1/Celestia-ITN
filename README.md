@@ -20,15 +20,18 @@ wget https://raw.githubusercontent.com/superneft1/Celestia-ITN/main/celestia-nod
   + After the installation is complete, be sure to back up your mnemonic and run the 
 
 ### 2. Check node ID
+  + To use this command, you must have the curl package installed; if not, you can install it with the apt install curl command.
 
 ### 3. Create new wallet
 
 ### 4. Backup Keys
 
 ### 5. Run Submit PayForBlob(PFB) transaction
+  + To use this command, you must have the curl package installed; if not, you can install it with the apt install curl command.
   + Please request blockspacerace faucet before submit PFB.
 
 ### 6. Remove node
+  + Before running this command you should backup the .celestia-light-blockspacerace-0/keys folder
 
 ### 7. Start celestia-lightd
 
