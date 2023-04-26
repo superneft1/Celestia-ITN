@@ -19,7 +19,7 @@ wget https://raw.githubusercontent.com/superneft1/Celestia-ITN/main/celestia-nod
 ### 1. Install node and setup systemd service
   + After the installation is complete, be sure to back up your mnemonic and run the 
 
-You can find the address by running the following command in the celestia-node directory:
+You can find the wallet address by running the following command in the celestia-node directory:
 ```
 ./cel-key list --node.type light --keyring-backend test --p2p.network <network>
 ```
