@@ -37,9 +37,10 @@ You can find the wallet address by running the following command in the celestia
   + Before running this command you should backup the .celestia-light-blockspacerace-0/keys folder
 
 ### 7. Start celestia-lightd
+  + If you install with option 1 celestia-lightd service is started
 
 ### 8. Stop celestia-lightd
 
-### 9. Check celestia-lightd
+### 9. Check celestia-lightd status
 
-### 10. Check celestia-lightd
+### 10. Check celestia-lightd logs
