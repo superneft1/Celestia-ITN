@@ -93,11 +93,6 @@ case $choice in
     sudo /bin/bash PayForBlob.sh
     echo "Done"
     ;;
-  5)  
-    read -p "Enter the block height: " height
-    curl -X GET "http://localhost:26659/header/$height" | jq .
-    echo "Done"
-    ;;
   7)
     echo "Removing node..."
     echo "Please wait..."
@@ -111,7 +106,6 @@ case $choice in
     echo "Done"
     ;;
   *)
-    echo "Invalid option. Please select option 1-8."
-    echo "Done"
+    echo "Invalid option. Please select option 1-7."
     ;;
 esac
