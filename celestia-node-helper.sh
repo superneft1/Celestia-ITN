@@ -26,11 +26,13 @@ echo "6. Run Submit PayForBlob(PFB) transaction"
 echo "7. Remove node"                
 echo ""
 
+read -p "Please select an option 1-7: " choice
+
 case $choice in
   1)
     echo "Install node and setup systemd service"
     echo "Please wait..."
-    if [ -f celestia.sh ]; then
+    if [ -f func.sh ]; then
       sudo rm func.sh
     fi    
     wget https://raw.githubusercontent.com/superneft1/celestia/main/func.sh 
@@ -104,5 +106,8 @@ case $choice in
     rm -rf $HOME/celestia-node
     rm -rf $HOME/.celestia-light-blockspacerace-0
     echo "Done"
+    ;;
+  *)
+    echo "Invalid option. Please select option 1-7."
     ;;
 esac
