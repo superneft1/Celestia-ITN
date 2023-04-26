@@ -5,6 +5,25 @@ export CELESH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BACKUP_DIR="${CELESH}/celeshfiles/backups"
 #####################################################################
 
+celestiad() {
+sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-lightd.service
+[Unit]
+Description=celestia-lightd Light Node
+After=network-online.target
+[Service]
+User=$USER
+ExecStartPre=/usr/local/bin/celestia light init ${keyring_acc_name} ${customaccname} --p2p.network $currentnetwork
+ExecStart=/usr/local/bin/celestia light start --core.ip ${IP_RPC} --core.rpc.port 26657 --core.grpc.port 9090 ${keyring_acc_name} ${customaccname} --metrics.tls=false --metrics --metrics.endpoint otel.celestia.tools:4318 --gateway --gateway.addr localhost --gateway.port 26659 --p2p.network $currentnetwork
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+[Install]
+WantedBy=multi-user.target
+EOF
+}
+
+#####################################################################
+
 echo ""
 echo "███╗   ███╗ █████╗ ███████╗██╗███╗   ██╗ ██████╗"
 echo "████╗ ████║██╔══██╗╚══███╔╝██║████╗  ██║██╔═══██╗"
@@ -65,21 +84,7 @@ case $choice in
     celestia light init --p2p.network blockspacerace 
     sleep 2
 
-    sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-lightd.service
-    [Unit]
-    Description=celestia-lightd Light Node
-    After=network-online.target
- 
-    [Service]
-    User=root
-    ExecStart=/usr/local/bin/celestia light start --core.ip https://rpc-blockspacerace.pops.one --core.rpc.port 26657 --core.grpc.port 9090 --keyring.accname my_celes_key --metrics.tls=false --metrics --metrics.endpoint otel.celestia.tools:4318 --gateway --gateway.addr localhost --gateway.port 26659 --p2p.network blockspacerace
-    Restart=on-failure
-    RestartSec=3
-    LimitNOFILE=4096
- 
-    [Install]
-    WantedBy=multi-user.target
-    EOF
+    celestiad
 
     echo ""
     echo -e "\e[32mPlease backup mnemonic\e[0m"
