@@ -16,7 +16,7 @@ wget https://raw.githubusercontent.com/superneft1/Celestia-ITN/main/celestia-nod
 
 # Celestia-node-helper options
 
-### 1. Install node - Install the Celestia `light` node.
+### 1. Install node and setup systemd service
   + After the installation is complete, be sure to back up your mnemonic and run the 
 
 ### 2. Check node ID
