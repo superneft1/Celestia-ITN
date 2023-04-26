@@ -41,12 +41,15 @@ echo "1. Install node and setup systemd service"
 echo "2. Check node ID"              
 echo "3. Create new wallet"
 echo "4. Backup keys"
-echo "5. Check celestia-lightd logs"
-echo "6. Run Submit PayForBlob(PFB) transaction"
-echo "7. Remove node"                
+echo "5. Run Submit PayForBlob(PFB) transaction"
+echo "6. Remove node"
+echo "7. Start celestia-lightd"
+echo "8. Stop celestia-lightd"
+echo "9. Check celestia-lightd status"
+echo "10. Check celestia-lightd logs"                
 echo ""
 
-read -p "Please select an option 1-7: " choice
+read -p "Please select an option 1-10: " choice
 
 case $choice in
   1)
@@ -86,6 +89,10 @@ case $choice in
     sleep 2
 
     celestiad
+    sleep 2
+    
+    sudo systemctl enable celestia-lightd    
+    sleep 2
 
     echo ""
     echo -e "\e[32mPlease backup mnemonic\e[0m"
@@ -135,10 +142,6 @@ case $choice in
     fi
     ;;
   5)
-    echo "Check celestia-lightd logs"
-    journalctl -u celestia-lightd.service -f
-    ;;
-  6)
     echo "Run Submit PayForBlob(PFB) transaction"
     if [ -f PayForBlob.sh ]; then
       sudo rm PayForBlob.sh
@@ -150,7 +153,7 @@ case $choice in
     sudo /bin/bash PayForBlob.sh
     echo "Done"
     ;;
-  7)
+  6)
     echo "Removing node..."
     echo "Please wait..."
     cd $HOME
@@ -162,7 +165,23 @@ case $choice in
     rm -rf $HOME/.celestia-light-blockspacerace-0
     echo "Done"
     ;;
+  7)
+    echo "Start celestia-lightd"
+    sudo systemctl start celestia-lightd
+    ;;
+  8)
+    echo "Stop celestia-lightd"
+    sudo systemctl status celestia-lightd
+    ;;
+  9)
+    echo "Check celestia-lightd status"
+    sudo systemctl status celestia-lightd
+    ;;
+  10)
+    echo "Check celestia-lightd logs"
+    journalctl -u celestia-lightd.service -f
+    ;;
   *)
-    echo "Invalid option. Please select option 1-7."
+    echo "Invalid option. Please select option 1-10."
     ;;
 esac
