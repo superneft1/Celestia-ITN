@@ -92,6 +92,7 @@ case $choice in
     sleep 2
     
     sudo systemctl enable celestia-lightd    
+    sudo systemctl start celestia-lightd  
     sleep 2
 
     echo ""
