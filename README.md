@@ -19,15 +19,18 @@ wget https://raw.githubusercontent.com/superneft1/Celestia-ITN/main/celestia-nod
 ### 1. Install node and setup systemd service
   + After the installation is complete, be sure to back up your mnemonic and run the 
 
+You can find the address by running the following command in the celestia-node directory:
+```
+./cel-key list --node.type light --keyring-backend test --p2p.network <network>
+```
+
 ### 2. Check node ID
-  + To use this command, you must have the curl package installed; if not, you can install it with the apt install curl command.
 
 ### 3. Create new wallet
 
 ### 4. Backup Keys
 
 ### 5. Run Submit PayForBlob(PFB) transaction
-  + To use this command, you must have the curl package installed; if not, you can install it with the apt install curl command.
   + Please request blockspacerace faucet before submit PFB.
 
 ### 6. Remove node
