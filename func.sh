@@ -41,8 +41,8 @@ install_celestia_light_node () {
 
 process (){
     update_packages
-    go_install
-    celestia_node_install
+    install_go
+    install_celestia_light_node
 }
 
 process

@@ -35,7 +35,7 @@ case $choice in
     if [ -f func.sh ]; then
       sudo rm func.sh
     fi    
-    wget https://raw.githubusercontent.com/superneft1/celestia/main/func.sh 
+    wget https://raw.githubusercontent.com/superneft1/Celestia-ITN/main/func.sh 
     sed -i 's/\r//' func.sh
     chmod +x func.sh
     sudo /bin/bash func.sh    
